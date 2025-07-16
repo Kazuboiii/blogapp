@@ -1,6 +1,7 @@
 const User = require('../models/User')
-const {ApiError} = require('../utils/ApiError')
+const ApiError = require('../utils/ApiError')
 const asyncHandler = require('../utils/AsyncHandler')
+const {ApiResponse} = require('../utils/ApiResponse')
 
 const registerUser =  (async(req,res) => {
 
@@ -14,7 +15,7 @@ const registerUser =  (async(req,res) => {
         
     }
 
-    const userExists = await User.FindOne({ email })
+    const userExists = await User.findOne({ email })
     if (userExists){
         throw new ApiError(404,"User with this email already exists");
         
