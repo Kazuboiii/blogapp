@@ -9,6 +9,8 @@ const port = process.env.port
 
 connectDB()
 
+app.use('/api/users',require('./src/routes/userRoutes'))
+
 
 app.listen(port, () => {
     console.log(`We are Connected ${port}`)
