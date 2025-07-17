@@ -11,6 +11,7 @@ const port = process.env.port
 connectDB()
 
 app.use('/api/users',require('./src/routes/userRoutes'))
+app.use('/api/blogs',require('./src/routes/blogRoutes'))
 
 
 app.listen(port, () => {
