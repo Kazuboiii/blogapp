@@ -8,10 +8,10 @@ const protect =asyncHandler(async(req,res,next)=>{
 
     if(
         req.headers.authorization &&
-        req.headers.authorization.startswith("Bearer")
+        req.headers.authorization.startsWith("Bearer")
     ){
         try{
-            token = req.headers.authorization.split("")[1];
+            token = req.headers.authorization.split(" ")[1];
             //decode token
             const decoded = jwt.verify(token, process.env.JWT_SECRET);
             //get user from the token
@@ -34,7 +34,7 @@ const protect =asyncHandler(async(req,res,next)=>{
 
 const authorizeRoles = (...roles) => {
     return (req, res, next) => {
-        if (!roles.includes(req.user.role)) {
+        if (!roles.includes(req.user.roles)) {
             res.status(403);
             throw new Error("Forbidden: Not authorized to access this resource");
         }
