@@ -12,6 +12,7 @@ connectDB()
 
 app.use('/api/users',require('./src/routes/userRoutes'))
 app.use('/api/blogs',require('./src/routes/blogRoutes'))
+app.use('/api/comments',require('./src/routes/commentRoutes'))
 
 
 app.listen(port, () => {
